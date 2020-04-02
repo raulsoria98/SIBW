@@ -1,0 +1,108 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	box-sizing: border-box;
+}
+
+header, .main, footer {
+	max-width: 1000px;
+	width: 90%;
+	margin: 20px auto;
+}
+
+body {
+	background-color: white;
+}
+
+header {
+	display: flex;
+    /* flex-shrink: 1; */
+    flex-direction: row-reverse;
+    align-items: center;
+    max-height: 300px;
+    margin-bottom: 0;
+}
+
+header a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+header a h1 {
+    font-size: xx-large;
+}
+
+#logo {
+	flex: 0.09;
+}
+
+.main {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: row-reverse;
+}
+
+.main .articulos, .main .evento {
+	flex-direction: row;
+	flex: 1;
+	margin-left: 1.5%;
+	padding: 20px 0px;
+	text-align: center;
+}
+
+footer {
+	background-color: black;
+	color: white;
+	padding: 10px 0px;
+	text-align: center;
+}
+
+/* ------------------------------------------------------------------------------------------------------- */
+
+.main .evento {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulos {
+    text-align: start;
+    margin-left: 20px;
+}
+
+.titulos a {
+    color: black;
+}
+
+.titulos h2 {
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.main .evento .contenido {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.main .evento .contenido .imagenes img {
+    width: 100%;
+}
+
+.main .evento .contenido .imagenes {
+	flex-shrink: 0.6;
+	margin-left: 1.5%;
+	text-align: end;
+}
+
+.main .evento .contenido .parrafos {
+    flex-grow: 1;
+    text-align: start;
+}
+
+.main .evento .contenido .parrafos p {
+	margin: 20px 0;
+	margin-right: 3%;
+}

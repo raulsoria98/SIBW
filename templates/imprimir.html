@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web para la primera práctica de SIBW">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/impresion.css">
+    <title>MOTOCICLETAS RS</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="img/logoRS.png" alt="Logotipo de la página">
+        <a href="index.php">
+            <h1>MOTOCICLETAS RS</h1>
+        </a>
+    </header>
+
+    <section class="main">
+        <section class="evento">
+            <div class="titulos">
+                <a href='evento.php?ev={{ idEv }}'>
+                    <h2>{{ titulo }}</h2>
+                </a>
+                <h3>{{ subtitulo }}</h3>
+            </div>
+            
+            <section class="contenido">
+                <div class="parrafos">
+                    {% for parrafo in parrafos %}
+                        <p>
+                            {{parrafo}}
+                        </p>
+                    {% endfor %}
+                </div>
+                <div class="imagenes">
+                    <img src="{{ imagen }}" alt="{{ titulo }}">
+                </div>
+            </section>
+
+        </section>
+    </section>
+
+    <footer>
+        <p>Raúl Soria González  ©   2020</p>
+    </footer>
+    
+</body>
+</html>

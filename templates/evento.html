@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block evento %}
+    <section class="evento">
+        <div class="head">
+            <div class="titulos">
+                <h2>{{ titulo }}</h2>
+                <h3>{{ subtitulo }}</h3>
+            </div>
+            <input onclick="comentario()" type="button" id="boton" value="Comentar">
+        </div>
+
+        <section class="contenido">
+            <div class="parrafos">
+                {% for parrafo in parrafos %}
+                    <p>
+                        {{ parrafo }}
+                    </p>
+                {% endfor %}
+            </div>
+
+            <div class="imagenes">
+                <img src="{{ imagen }}" alt="{{ titulo }}">
+                <a href="imprimir.php?ev={{ idEv }}">
+                    <img src="./img/impresora.png" alt="logo impresion" id="impresion">
+                </a>
+            </div>
+        </section>
+        
+        <section id="comentarios" style="display:none">
+            <input id="cerrar" onclick="comentario()" type="image" src="img/cerrar.png" alt="cerrar">
+            <section id="old">
+                {% for comentario in comentarios %}
+                    <div class="comentario">
+                        {% if loop.index != 1 %}
+                            <hr><br>
+                        {% endif %}
+                        <p class="mensaje">{{ comentario['mensaje'] }}</p>
+                        <p class="nombre">{{ comentario['nombre'] }}</p>
+                        <p class="fecha">{{ comentario['fecha'] }}</p>
+                    </div>
+                {% endfor %}
+            </section>
+            <form id="formulario" name="formulario">
+                <label for="nombre">Nombre:</label>
+                <input oninput="censurarNombre()" type="text" name="nombre" id="nombre" placeholder="Escriba su nombre">
+                
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="Escriba su e-mail">
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea oninput="censurarTexto()" name="mensaje" id="mensaje" placeholder="Escriba el mensaje que desea enviar"></textarea>
+                
+                <input id="boton_enviar" onclick="new_mensaje()" type="button" value="Enviar">
+            </form>
+        </section>
+    </section>
+{% endblock %}
