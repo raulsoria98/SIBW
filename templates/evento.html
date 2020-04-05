@@ -21,14 +21,14 @@
 
             <div class="imagenes">
                 <img src="{{ imagen }}" alt="{{ titulo }}">
-                <a href="imprimir.php?ev={{ idEv }}">
-                    <img src="./img/impresora.png" alt="logo impresion" id="impresion">
+                <a href="/imprimir/{{ idEv }}">
+                    <img src="/img/impresora.png" alt="logo impresion" id="impresion">
                 </a>
             </div>
         </section>
         
         <section id="comentarios" style="display:none">
-            <input id="cerrar" onclick="comentario()" type="image" src="img/cerrar.png" alt="cerrar">
+            <input id="cerrar" onclick="comentario()" type="image" src="/img/cerrar.png" alt="cerrar">
             <section id="old">
                 {% for comentario in comentarios %}
                     <div class="comentario">

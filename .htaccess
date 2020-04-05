@@ -1,0 +1,13 @@
+RedirectMatch 404 /templates
+RedirectMatch 404 /scripts
+RedirectMatch 404 /img
+RedirectMatch 404 /css
+RedirectMatch 404 /js
+RedirectMatch 404 /.git
+
+RewriteEngine On
+RewriteBase /
+Options -Indexes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php [L]
