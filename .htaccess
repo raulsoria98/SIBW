@@ -1,8 +1,8 @@
 RedirectMatch 404 /templates
 RedirectMatch 404 /scripts
-RedirectMatch 404 /img
-RedirectMatch 404 /css
-RedirectMatch 404 /js
+# RedirectMatch 404 /js
+# RedirectMatch 404 /img
+# RedirectMatch 404 /css
 RedirectMatch 404 /.git
 
 RewriteEngine On
