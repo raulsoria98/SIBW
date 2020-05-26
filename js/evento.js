@@ -158,9 +158,9 @@ function new_mensaje()
 
         var nuevaFecha = document.createElement("P");
         nuevaFecha.classList.add("fecha");
-        var fecha = new Date()
+        var fecha = new Date();
         var contenidoFecha = fecha.toLocaleDateString() + ' ' + fecha.toLocaleTimeString();
-        var contenidoFecha = document.createTextNode(contenidoFecha)
+        var contenidoFecha = document.createTextNode(contenidoFecha);
         nuevaFecha.appendChild(contenidoFecha)
         
         div.appendChild(hr)
@@ -170,6 +170,12 @@ function new_mensaje()
         div.appendChild(nuevaFecha)
         comentarios.appendChild(div)
 
-        comentarios.scroll(0,10000);
+        comentarios.scrollTop = comentarios.scrollHeight;
     }
+}
+
+function scrollToBottom()
+{
+    var comentarios = document.getElementById("old");
+    comentarios.scrollTop = comentarios.scrollHeight;
 }

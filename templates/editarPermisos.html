@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block evento %}
+    <section class="formularios_usuarios">
+            {% for usuario in usuarios %}
+                <div class="usuario">
+                    <h3>{{ usuario.nick }}</h3>
+                    <form action="/editarPermisos/{{ usuario.nick }}" method="post" id="form_usuarios" class="form_usuario" name="editar_{{ usuario.nick }}">
+                        <label for="nombre">Nombre de usuario:</label>
+                        <input type="text" name="nombre" id="nombre" value="{{ usuario.nick }}">
+
+                        <label><input name="permisos[]" type="checkbox" id="moderador" value="moderador" {% if usuario.moderador %}checked{% endif %}>Moderador</label>
+                        <label><input name="permisos[]" type="checkbox" id="gestor" value="gestor" {% if usuario.gestor %}checked{% endif %}>Gestor</label>
+                        <label><input name="permisos[]" type="checkbox" id="superusuario" value="superusuario" {% if usuario.superusuario %}checked{% endif %}>Superusuario</label>
+
+                        <input id="boton_enviar" type="submit" value="Modificar Usuario">
+                    </form>
+                </div>
+            {% endfor %}
+        </section>
+{% endblock %}

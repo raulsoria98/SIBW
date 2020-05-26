@@ -8,5 +8,5 @@
 
     $evento = getEvento($idEv);
     
-    echo $twig->render('imprimir.html', ['titulo' => $evento['titulo'], 'subtitulo' => $evento['subtitulo'], 'imagen' => $evento['imagen'], 'parrafos' => $evento['parrafos'], 'idEv' => $idEv]);
+    echo $twig->render('imprimir.html', $evento + ['idEv' => $idEv]);
 ?>

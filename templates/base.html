@@ -7,14 +7,24 @@
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/portada_evento.css">
     <title>MOTOCICLETAS RS</title>
-    <script src={{ script }}></script>
+    <script src='/js/evento.js'></script>
+    <script src="https://kit.fontawesome.com/ad1b2db1ee.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
     <header>
         <img id="logo" src="/img/logoRS.png" alt="Logotipo de la página">
-        <a href="/inicio">
-            <h1>MOTOCICLETAS RS</h1>
-        </a>
+        <h1>
+            <a href="/inicio">MOTOCICLETAS RS</a>
+        </h1>
+        {% if usuario.superusuario %}
+            <a href="/paginaEditarPermisos" title="Editar Usuarios" class="editarUsuarios"><i class="fas fa-user-cog"></i></a>
+        {% endif %}
+        {% if usuario %}
+            <a href="/logout" title="Desconectarse" class="iniciarSesion">{{usuario.nick}} / Desconectarse</a>
+        {% else %}
+            <a href="/login" title="Iniciar Sesión" class="iniciarSesion">Iniciar Sesión / Registrarse</a>
+        {% endif %}
     </header>
 
     <nav>
@@ -26,9 +36,6 @@
     </nav>
 
     <section class="main">
-
-        {% block evento %}{% endblock %}
-
         <aside>
             <h3>Sobre nosotros</h3>
             <p>
@@ -43,14 +50,17 @@
             
             <img src="/img/motos.png" alt="Motos Honda">
         </aside>
+
+        {% block evento %}{% endblock %}
+
     </section>
 
     <footer>
         <p>Raúl Soria González  ©   2020</p>
         <div class="social">
-            <a href="https://twitter.com" target="_blank" title="twitter.com"><img src="/img/twitter.png" alt="Twitter"></a>
-            <a href="https://www.instagram.com" target="_blank" title="instagram.com"><img src="/img/instagram.png" alt="Instagram"></a>
-            <a href="https://www.facebook.com" target="_blank" title="facebook.com"><img src="/img/facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com" target="_blank" title="twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank" title="instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" title="facebook.com"><i class="fab fa-facebook-square"></i></a>
         </div>
     </footer>
     

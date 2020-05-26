@@ -11,34 +11,44 @@
 <body>
     <header>
         <img id="logo" src="/img/logoRS.png" alt="Logotipo de la página">
-        <a href="/inicio">
-            <h1>MOTOCICLETAS RS</h1>
-        </a>
+        <h1>
+            <a href="/inicio">MOTOCICLETAS RS</a>
+        </h1>
     </header>
 
     <section class="main">
-        <section class="evento">
-            <div class="titulos">
-                <a href='/evento/{{ idEv }}'>
-                    <h2>{{ titulo }}</h2>
-                </a>
-                <h3>{{ subtitulo }}</h3>
-            </div>
-            
-            <section class="contenido">
-                <div class="parrafos">
-                    {% for parrafo in parrafos %}
-                        <p>
-                            {{parrafo}}
-                        </p>
-                    {% endfor %}
+        {% if error == false %} {# Si el evento existe #}
+            <section class="evento">
+                <div class="titulos">
+                    <h2>
+                        <a href='/evento/{{ idEv }}'>{{ titulo }}</a>
+                    </h2>
+                    <h3>{{ subtitulo }}</h3>
                 </div>
-                <div class="imagenes">
-                    <img src="{{ imagen }}" alt="{{ titulo }}">
+                
+                <section class="contenido">
+                    <div class="parrafos">
+                        {% for parrafo in parrafos %}
+                            <p>
+                                {{parrafo}}
+                            </p>
+                        {% endfor %}
+                    </div>
+                    <div class="imagenes">
+                        <img src="{{ imagen }}" alt="{{ titulo }}">
+                    </div>
+                </section>
+            </section>
+        {% else %} {# Si el evento no existe #}
+            <section class="evento">
+                <div class="head">
+                    <div class="titulos">
+                        <h2>{{ titulo }}</h2>
+                        <h3>{{ subtitulo }}</h3>
+                    </div>
                 </div>
             </section>
-
-        </section>
+        {% endif %}
     </section>
 
     <footer>

@@ -24,14 +24,14 @@ header {
     margin-bottom: 0;
 }
 
-header a {
+header h1 {
     flex: 1;
     text-align: center;
-    text-decoration: none;
-    color: black;
 }
 
-header a h1 {
+header h1 a {
+	text-decoration: none;
+	color: black;
     font-size: xx-large;
 }
 

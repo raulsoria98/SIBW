@@ -19,9 +19,58 @@
     {
         include("scripts/imprimir.php");
     }
+    elseif (startsWith($uri, "/login"))
+    {
+        include("scripts/login.php");
+    }
+    elseif (startsWith($uri, "/registrar"))
+    {
+        include("scripts/registrar.php");
+    }
+    elseif (startsWith($uri, "/logout"))
+    {
+        include("scripts/logout.php");
+    }
+    elseif (startsWith($uri, "/borrarComentario"))
+    {
+        include("scripts/borrarComentario.php");
+    }
+    elseif (startsWith($uri, "/enviarComentario"))
+    {
+        include("scripts/enviarComentario.php");
+    }
+    elseif (startsWith($uri, "/paginaEditarComentario"))
+    {
+        include("scripts/paginaEditarComentario.php");
+    }
+    elseif (startsWith($uri, "/editarComentario"))
+    {
+        include("scripts/editarComentario.php");
+    }
+    elseif (startsWith($uri, "/paginaEditarPermisos"))
+    {
+        include("scripts/paginaEditarPermisos.php");
+    }
+    elseif (startsWith($uri, "/editarPermisos"))
+    {
+        include("scripts/editarPermisos.php");
+    }
     else
     {
-        echo $twig->render('portada.html', []);
+        include("scripts/bd.php");
+        
+        $mysqli = conectar();
+
+        $variablesParaTwig = array();
+
+        session_start();
+
+        if(isset($_SESSION['nickUsuario']))
+        {
+            $variablesParaTwig['usuario'] = getUsuario($_SESSION['nickUsuario'], $mysqli);
+        }
+
+        echo $twig->render('portada.html', $variablesParaTwig);
     }
 
 ?>
