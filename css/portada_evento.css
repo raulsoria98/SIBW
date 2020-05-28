@@ -181,7 +181,8 @@ footer {
 }
 
 .main .evento .contenido .imagenes img {
-    width: 100%;
+	width: 100%;
+	max-width: 720px;
 }
 
 .main .evento .contenido .imagenes {
@@ -264,34 +265,34 @@ footer {
 	padding: 20px;
 	display: inline-block;
 }
-#formulario label {
+.formulario label {
 	font-size: 12px;
 	display: block;
 	width: 100%;
 }
-#formulario textarea {
+.formulario textarea {
 	resize: vertical;
 	max-height: 300px;
 	min-height: 100px;
 }
-#formulario input, #formulario textarea{
+.formulario input, .formulario textarea{
 	margin-bottom: 20px;
 	width: 100%;
 	padding: 10px;
 	border: 2px solid #ccc;
 	margin-left: 0;
 }
-#formulario input:focus, #formulario textarea:focus {
+.formulario input:focus, .formulario textarea:focus {
 	border: 2px solid #1668C4;
 }
-#formulario input[type=button], #formulario input[type=submit] {
+.formulario input[type=button], .formulario input[type=submit] {
 	width: 100%;
 	margin-bottom: 0;
 	background: #1668C4;
 	color: white;
 	border: none;
 }
-#formulario input[type=button]:hover, #formulario input[type=submit]:hover {
+.formulario input[type=button]:hover, .formulario input[type=submit]:hover {
 	background: #4A88F4;
 	cursor: pointer;
 }
@@ -374,7 +375,7 @@ footer {
 	text-align: center;
 }
 
-#botonBorrar, #botonEditar {
+#botonBorrar, #botonEditar, #botonAddEvento {
 	text-decoration: none;
 }
 
@@ -385,6 +386,11 @@ footer {
 
 #botonBorrar {
 	color: red;
+}
+
+#botonAddEvento {
+	color: black;
+	font-size: 20pt;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */

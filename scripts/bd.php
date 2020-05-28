@@ -146,4 +146,62 @@
 
         $mysqli->query("UPDATE `usuarios` SET `nick` = '" . $nombre . "', `moderador` = b'" . $moderador . "', `gestor` = b'" . $gestor . "', `superusuario` = b'" . $superusuario . "' WHERE `usuarios`.`nick` = '" . $nick . "'");
     }
+
+    function getEventos($mysqli = false)
+    {
+        if(!$mysqli)
+            $mysqli = conectar();
+        
+        $res = $mysqli->query("SELECT idEv, portada, titulo FROM `eventos` ORDER BY idEv");
+
+        $eventos = array();
+        $conjunto = array();
+
+        if($res->num_rows > 0)
+        {
+            while ($row = $res->fetch_assoc()) {
+                if(count($conjunto) < 3) {
+                    array_push($conjunto, $row);
+                }
+                else {
+                    array_push($eventos, $conjunto);
+                    $conjunto = array();
+                    array_push($conjunto, $row);
+                }
+            }
+            if(!empty($conjunto))
+                array_push($eventos, $conjunto);
+        }
+
+        return $eventos;
+    }
+
+    function borrarEvento($idEv, $mysqli = false)
+    {
+        if(!$mysqli)
+            $mysqli = conectar();
+
+        $mysqli->query("DELETE FROM `eventos` WHERE `eventos`.`idEv` =" . $idEv);
+    }
+
+    function addEvento($idEv, $titulo, $subtitulo, $parrafos, $imagen, $mysqli = false)
+    {
+        if(!$mysqli)
+            $mysqli = conectar();
+        
+        $mysqli->query("INSERT INTO `eventos` (`idEv`, `titulo`, `subtitulo`, `parrafos`, `portada`, `imagen`) VALUES ('" . $idEv . "', '" . $titulo . "', '" . $subtitulo . "', '" . $parrafos . "', '" . $imagen . "', '" . $imagen . "')");
+    }
+
+    function editarEvento($idAntiguo, $idEv, $titulo, $subtitulo, $parrafos, $rutaImg, $mysqli = false)
+    {
+        if(!$mysqli)
+            $mysqli = conectar();
+
+        if($rutaImg == null)
+            $sql = "UPDATE `eventos` SET `idEv` = '" . $idEv . "', `titulo` = '" . $titulo . "', `subtitulo` = '" . $subtitulo . "', `parrafos` = '" . $parrafos . "' WHERE `eventos`.`idEv` = " . $idAntiguo;
+        else
+            $sql = "UPDATE `eventos` SET `idEv` = '" . $idEv . "', `titulo` = '" . $titulo . "', `subtitulo` = '" . $subtitulo . "', `portada` = '" . $rutaImg . "', `imagen` = '" . $rutaImg . "', `parrafos` = '" . $parrafos . "' WHERE `eventos`.`idEv` = " . $idAntiguo;
+        
+        $mysqli->query($sql);
+    }
 ?>

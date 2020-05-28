@@ -55,6 +55,26 @@
     {
         include("scripts/editarPermisos.php");
     }
+    elseif (startsWith($uri, "/borrarEvento"))
+    {
+        include("scripts/borrarEvento.php");
+    }
+    elseif (startsWith($uri, "/paginaAddEvento"))
+    {
+        include("scripts/paginaAddEvento.php");
+    }
+    elseif (startsWith($uri, "/addEvento"))
+    {
+        include("scripts/addEvento.php");
+    }
+    elseif (startsWith($uri, "/paginaEditarEvento"))
+    {
+        include("scripts/paginaEditarEvento.php");
+    }
+    elseif (startsWith($uri, "/editarEvento"))
+    {
+        include("scripts/editarEvento.php");
+    }
     else
     {
         include("scripts/bd.php");
@@ -62,6 +82,8 @@
         $mysqli = conectar();
 
         $variablesParaTwig = array();
+
+        $variablesParaTwig['eventos'] = getEventos($mysqli);
 
         session_start();
 

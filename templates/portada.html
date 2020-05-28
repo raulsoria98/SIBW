@@ -3,8 +3,33 @@
 {% block evento %}
     <section class="articulos">
         <h2>Nuestras Motos</h2>
+        {% if usuario.gestor or usuario.superusuario %}
+            <a id="botonAddEvento" title="Añadir Evento" href="/paginaAddEvento">
+                <i class="fas fa-plus-square"></i>
+            </a>
+        {% endif %}
         <section class="tabla">
+        {% for conjunto in eventos %}
             <div class="row">
+            {% for evento in conjunto %}
+                <div class="column">
+                {% if usuario.gestor or usuario.superusuario %}
+                    <a id="botonBorrar" title="Borrar Evento" href="/borrarEvento/{{ evento.idEv }}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    <a id="botonEditar" title="Editar Evento" href="/paginaEditarEvento/{{ evento.idEv }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                {% endif %}
+                    <a href="/evento/{{ evento.idEv }}">
+                        <img src="{{ evento.portada }}" alt="{{ evento.titulo }}">
+                        {{ evento.titulo }}
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        {% endfor %}
+            {# <div class="row">
                 <div class="column">
                     <a href="/evento/1">
                         <img src="/img/CB1000R.jpg" alt="CB1000R">
@@ -17,14 +42,14 @@
                         Ducati Panigale V4
                     </a>
                 </div>
-                {# <div class="column">
+                <div class="column">
                     <a href="/evento/1">
                         <img src="/img/Fireblade.jpg" alt="Fireblade">
                         Honda CBR1000RR-R (Fireblade)
                     </a>
-                </div> #}
+                </div>
             </div>
-            {# <div class="row">
+            <div class="row">
                 <div class="column">
                     <a href="/evento/1">
                         <img src="/img/Fat Bob.jpg" alt="Fat Bob">

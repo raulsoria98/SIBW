@@ -2,22 +2,22 @@
 
 {% block evento %}
     <section class="login">
-            <div class="iniciar">
-                <form action="/editarComentario" method="post" id="formulario" name="editarComentario">
-                    <h3>EDITAR COMENTARIO</h3>
+        <div class="iniciar">
+            <form action="/editarComentario" method="post" id="formulario-editarComentario" class="formulario" name="editarComentario">
+                <h3>EDITAR COMENTARIO</h3>
 
-                    <p>Mensaje original: "{{ mensaje }}"</p>
-                    <br>
+                <p>Mensaje original: "{{ mensaje }}"</p>
+                <br>
 
-                    <input style="display:none" type="number" name="idEv" id="idEv" value="{{ idEv }}">
+                <input style="display:none" type="number" name="idEv" id="idEv" value="{{ idEv }}">
 
-                    <input style="display:none" type="number" name="idCom" id="idCom" value="{{ idCom }}">
+                <input style="display:none" type="number" name="idCom" id="idCom" value="{{ idCom }}">
 
-                    <label for="mensaje">Nuevo mensaje:</label>
-                    <textarea oninput="censurarTexto()" name="mensaje" id="mensaje" placeholder="Escriba el mensaje que desea enviar"></textarea>
-                    
-                    <input id="boton_enviar" type="submit" value="Editar Mensaje">
-                </form>
-            </div>
-        </section>
+                <label for="mensaje">Nuevo mensaje:</label>
+                <textarea oninput="censurarTexto()" name="mensaje" id="mensaje" placeholder="Escriba el mensaje que desea enviar"></textarea>
+                
+                <input id="boton_enviar" type="submit" value="Editar Mensaje">
+            </form>
+        </div>
+    </section>
 {% endblock %}
