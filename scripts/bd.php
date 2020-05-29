@@ -147,12 +147,12 @@
         $mysqli->query("UPDATE `usuarios` SET `nick` = '" . $nombre . "', `moderador` = b'" . $moderador . "', `gestor` = b'" . $gestor . "', `superusuario` = b'" . $superusuario . "' WHERE `usuarios`.`nick` = '" . $nick . "'");
     }
 
-    function getEventos($mysqli = false)
+    function getEventos($publicado ,$mysqli = false)
     {
         if(!$mysqli)
             $mysqli = conectar();
         
-        $res = $mysqli->query("SELECT idEv, portada, titulo FROM `eventos` ORDER BY idEv");
+        $res = $mysqli->query("SELECT idEv, portada, titulo FROM `eventos` WHERE `eventos`.`publicado` = b'" . $publicado . "' ORDER BY idEv");
 
         $eventos = array();
         $conjunto = array();
@@ -203,5 +203,13 @@
             $sql = "UPDATE `eventos` SET `idEv` = '" . $idEv . "', `titulo` = '" . $titulo . "', `subtitulo` = '" . $subtitulo . "', `portada` = '" . $rutaImg . "', `imagen` = '" . $rutaImg . "', `parrafos` = '" . $parrafos . "' WHERE `eventos`.`idEv` = " . $idAntiguo;
         
         $mysqli->query($sql);
+    }
+
+    function ocultarMostrarEvento($idEv, $mostrar, $mysqli = flase)
+    {
+        if(!$mysqli)
+            $mysqli = conectar();
+        
+        $mysqli->query("UPDATE `eventos` SET `publicado` = b'" . $mostrar . "' WHERE `eventos`.`idEv` = " . $idEv);
     }
 ?>

@@ -375,13 +375,21 @@ footer {
 	text-align: center;
 }
 
-#botonBorrar, #botonEditar, #botonAddEvento {
+#botonBorrar, #botonEditar, #botonAddEvento, #botonOcultarEvento, #botonMostrarEvento {
 	text-decoration: none;
+	margin: 10px;
 }
 
 #botonEditar {
-	color: black;
-	margin-left: 10px;
+	color: rgb(0, 102, 255);
+}
+
+#botonOcultarEvento {
+	color: rgb(204, 0, 255);
+}
+
+#botonMostrarEvento {
+	color: rgb(43, 196, 38);
 }
 
 #botonBorrar {

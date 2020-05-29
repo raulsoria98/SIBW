@@ -20,6 +20,9 @@
                     <a id="botonEditar" title="Editar Evento" href="/paginaEditarEvento/{{ evento.idEv }}">
                         <i class="fas fa-edit"></i>
                     </a>
+                    <a id="botonOcultarEvento" title="Ocultar Evento" href="/ocultarEvento/{{ evento.idEv }}">
+                        <i class="fas fa-eye-slash"></i>
+                    </a>
                 {% endif %}
                     <a href="/evento/{{ evento.idEv }}">
                         <img src="{{ evento.portada }}" alt="{{ evento.titulo }}">
@@ -29,6 +32,32 @@
             {% endfor %}
             </div>
         {% endfor %}
+
+        {% if usuario.gestor or usuario.superusuario %}
+        {% for conjunto in ocultos %}
+            <div class="row">
+            {% for evento in conjunto %}
+                <div class="column">
+                {% if usuario.gestor or usuario.superusuario %}
+                    <a id="botonBorrar" title="Borrar Evento" href="/borrarEvento/{{ evento.idEv }}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    <a id="botonEditar" title="Editar Evento" href="/paginaEditarEvento/{{ evento.idEv }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a id="botonMostrarEvento" title="Mostrar Evento" href="/mostrarEvento/{{ evento.idEv }}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                {% endif %}
+                    <a href="/evento/{{ evento.idEv }}">
+                        <img src="{{ evento.portada }}" alt="{{ evento.titulo }}">
+                        {{ evento.titulo }}
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        {% endfor %}
+        {% endif %}
             {# <div class="row">
                 <div class="column">
                     <a href="/evento/1">

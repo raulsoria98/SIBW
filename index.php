@@ -75,6 +75,10 @@
     {
         include("scripts/editarEvento.php");
     }
+    elseif (startsWith($uri, "/ocultarEvento") || startsWith($uri, "/mostrarEvento"))
+    {
+        include("scripts/ocultarEvento.php");
+    }
     else
     {
         include("scripts/bd.php");
@@ -83,7 +87,9 @@
 
         $variablesParaTwig = array();
 
-        $variablesParaTwig['eventos'] = getEventos($mysqli);
+        $variablesParaTwig['eventos'] = getEventos(true ,$mysqli);
+
+        $variablesParaTwig['ocultos'] = getEventos(false ,$mysqli);
 
         session_start();
 
